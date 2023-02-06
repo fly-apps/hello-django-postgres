@@ -25,9 +25,9 @@ SECRET_KEY = config('SECRET_KEY')
 
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'hello-django-postgres.fly.dev']
 
-CSRF_TRUSTED_ORIGINS = ['https://*.fly.dev']
+CSRF_TRUSTED_ORIGINS = ['https://hello-django-postgres.fly.dev']
 
 # Application definition
 
@@ -76,6 +76,8 @@ WSGI_APPLICATION = 'hello_django.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
+
+# default: postgres://<username>:<password>@<host>:<port>/<db>
 default_dburl = 'postgres://postgres:postgres@localhost:5432/hello_django'
 DATABASES = {
     'default': config('DATABASE_URL', default=default_dburl, cast=dburl)
